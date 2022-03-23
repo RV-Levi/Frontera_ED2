@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author elarteaga
@@ -21,7 +20,7 @@ public class ArbolBinario {
         this.raiz = null;
     }
 
-    public void agregar(int dato) {
+    public void agregar(Double dato) {
         Nodo nuevo = new Nodo(dato, null, null);
         insertar(nuevo, raiz);
     }
@@ -44,22 +43,6 @@ public class ArbolBinario {
                 }
             }
         }
-
-    }
-
-    //metodos nuevos
-    public boolean existe(int info) {
-        Nodo reco = raiz;
-        while (reco != null) {
-            if (info == reco.getDato()) {
-                return true;
-            } else if (info > reco.getDato()) {
-                reco = reco.getDer();
-            } else {
-                reco = reco.getIzq();
-            }
-        }
-        return false;
     }
 
     public int cantidad() {
@@ -75,8 +58,9 @@ public class ArbolBinario {
             cantidad(reco.getDer());
         }
     }
-    
-    ArrayList<Nodo> hojas = new ArrayList<Nodo>();
+
+    ArrayList<Nodo> hojas = new ArrayList();
+
     private void cantidadNodosHoja(Nodo reco) {
         if (reco != null) {
             if (reco.getIzq() == null && reco.getDer() == null) {
@@ -88,13 +72,13 @@ public class ArbolBinario {
         }
     }
 
-    public void mostrarHojas(){
+    public void frontera() {
         cantidadNodosHoja(raiz);
         for (int i = 0; i < hojas.size(); i++) {
-            System.out.println(hojas.get(i));
+            System.out.println(hojas.get(i).getDato());
         }
     }
-    
+
     public int cantidadNodosHoja() {
         cant = 0;
         cantidadNodosHoja(raiz);
@@ -117,26 +101,6 @@ public class ArbolBinario {
         }
     }
 
-    public void menorValor() {
-        if (raiz != null) {
-            Nodo reco = raiz;
-            while (reco.getIzq() != null) {
-                reco = reco.getIzq();
-            }
-            System.out.println("Menor valor del árbol:" + reco.getDato());
-        }
-    }
-
-    public void mayorValor() {
-        if (raiz != null) {
-            Nodo reco = raiz;
-            while (reco.getDer() != null) {
-                reco = reco.getDer();
-            }
-            System.out.println("Mayor valor del árbol:" + reco.getDato());
-        }
-    }
-
     int subizq = 0;
     int subder = 0;
 
@@ -152,19 +116,15 @@ public class ArbolBinario {
             System.out.println("El balance es -1, derecha");
         } else if (subizq - subder == 1) {
             System.out.println("El balance 1, izquierda");
-
         } else {
             System.out.println("No es balanceado.."
-                    + "porque es mas grande el lado "
+                    + "porque es más grande el lado "
                     + ((subizq > subder) ? "Izquierdo" : "Derecho"));
         }
-
     }
 
     public void Balance(Nodo reco, boolean lado, int i) {
-
         if (reco != null) {
-
             if (reco.getDer() == null && reco.getIzq() == null) {
                 if (lado) {
                     subder = (i > subder) ? i : subder;
@@ -172,17 +132,14 @@ public class ArbolBinario {
                     subizq = (i > subizq) ? i : subizq;
                 }
             }
-
             Balance(reco.getDer(), lado, i + 1);
             if (i == 0) {
                 lado = false;
             }
             Balance(reco.getIzq(), lado, i + 1);
         }
-
     }
 
-    //altura arbol
     String[] niveles;
 
     public int alturaArbol() {
@@ -198,23 +155,6 @@ public class ArbolBinario {
                 altura = nivel;
             }
             alturaArbol(pivote.getDer(), nivel + 1);
-        }
-    }
-
-    public void imprimirNivel() {
-        niveles = new String[altura + 1];
-
-        imprimirNivel(raiz, 0);
-        for (int i = 0; i < niveles.length; i++) {
-            System.out.println(niveles[i] + " En nivel: " + i);
-        }
-    }
-
-    public void imprimirNivel(Nodo pivote, int nivel2) {
-        if (pivote != null) {
-            niveles[nivel2] = pivote.getDato() + ", " + ((niveles[nivel2] != null) ? niveles[nivel2] : "");
-            imprimirNivel(pivote.getDer(), nivel2 + 1);
-            imprimirNivel(pivote.getIzq(), nivel2 + 1);
         }
     }
 }

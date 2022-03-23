@@ -10,20 +10,20 @@
  */
 public class Nodo {
 
-    private int dato;
+    private Double dato;
     private Nodo izq, der;
 
-    public Nodo(int dato, Nodo izq, Nodo der) {
+    public Nodo(Double dato, Nodo izq, Nodo der) {
         this.dato = dato;
         this.izq = izq;
         this.der = der;
     }
 
-    public int getDato() {
+    public Double getDato() {
         return dato;
     }
 
-    public void setDato(int dato) {
+    public void setDato(Double dato) {
         this.dato = dato;
     }
 
