@@ -13,8 +13,7 @@ public class Main {
     public static void main(String[] arg) {
         ArbolBinario abo = new ArbolBinario();
         int var1, var2, iter;
-        Double valor;
-        Double inser;
+        Double valor, inser;
         Scanner texto = new Scanner(System.in);
 
         System.out.println("Cómo desea ingresar datos?\n"
