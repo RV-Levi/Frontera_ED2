@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -72,10 +75,12 @@ public class ArbolBinario {
             cantidad(reco.getDer());
         }
     }
-
+    
+    ArrayList<Nodo> hojas = new ArrayList<Nodo>();
     private void cantidadNodosHoja(Nodo reco) {
         if (reco != null) {
             if (reco.getIzq() == null && reco.getDer() == null) {
+                hojas.add(reco);
                 cant++;
             }
             cantidadNodosHoja(reco.getIzq());
@@ -83,6 +88,13 @@ public class ArbolBinario {
         }
     }
 
+    public void mostrarHojas(){
+        cantidadNodosHoja(raiz);
+        for (int i = 0; i < hojas.size(); i++) {
+            System.out.println(hojas.get(i));
+        }
+    }
+    
     public int cantidadNodosHoja() {
         cant = 0;
         cantidadNodosHoja(raiz);

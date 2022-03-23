@@ -49,6 +49,9 @@ public class Main {
                 case 4:
                     abo.imprimirBalance();
                     break;
+                case 5:
+                    System.out.println("Los nodos hojas son: " + mostrarHojas());
+                    break;
             }
         } while (var != 0);
 
