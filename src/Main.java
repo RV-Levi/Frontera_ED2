@@ -1,13 +1,7 @@
 
 import java.util.Scanner;
 
-/*
-Estructura del árbol por https://aprenderaprogramar.com/foros/index.php?PHPSESSID=01aq37u7s0quf77huc4irj3m22&topic=1428.0
- */
-/**
- *
- * @author elarteaga
- */
+//@author elarteaga
 public class Main {
 
     public static void main(String[] arg) {
@@ -87,19 +81,3 @@ public class Main {
         }
     }
 }
-
-/*public void frontera(Nodo raiz, Nodo ptr, Nodo Q){
-    if (raiz != null & raiz.izq == null & raiz.der == null) {
-        Obtener(P);
-        P.info = raiz.dato;
-        P.link = null;
-        if (ptr == null) {
-            ptr = P;
-        else {
-            Q.link = P;
-        }
-        Q = P;   
-    }
-    frontera(raiz.izq, ptr, Q);
-    frontera(raiz.der, ptr, Q);
-}*/
